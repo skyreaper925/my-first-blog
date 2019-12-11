@@ -1,13 +1,13 @@
 {% load static %}
 <html>
     <head>
-        <title>First site!)</title>
+        <title>Cheerduck</title>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
         <style>
             h1 a {
-                color: #FCA205;
+                color: rgb(211, 5, 252)21, 252);
                 font-family: 'Lobster';
             }
             body {
@@ -61,16 +61,22 @@
             }
 
             .post h1 a, .post h1 a:visited {
-                color: #000000;
+                color: #656ca7;
             }
         </style>
     </head>
+    
+    
+    
+    
     <body>
         <div class="page-header">
                 <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-                <a href="{% url 'user_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-                <h1><a href="/">Django Girls Blog</a></h1>
+                <a href="{% url 'user_new' %}" class="top-menu"><span class="glyphicon glyphicon-pencil"></span></a>
+                <a href="{% url 'consultation_new' %}" class="top-menu"><span class="glyphicon glyphicon-bookmark"></span></a>
+                <h1><a href="/">Cheerduck</a></h1>
         </div>
+
         <div class="content container">
             <div class="row">
                 <div class="col-md-8">

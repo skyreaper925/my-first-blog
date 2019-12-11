@@ -1,0 +1,106 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <form>
+    <h1>New consultation</h1>
+    <form method="POST" class="consultation-form">{% csrf_token %}
+        <!-- {{ consultation.creation }}
+        {{ consultation.date }}
+        {{ consultation.email }}
+        {{ consultation.theme }}
+        {{ consultation.discription }}
+        {{ consultation.spectators }}
+        {{ consultation.longliness }} -->
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+{% endblock %}
+
+<!-- <!DOCTYPE html>
+<html>
+
+<body>
+    <form action="http://cheerduck.pythonanywhere.com/" method="POST">
+        <section class="title">
+            <label for="title">Название консультации</label>
+            <input type="title" name="title" id="title" minlength = "10" maxlength = "40" required>
+
+            <label for="author">Автор</label>
+            <input type="author" name="author" id="author" minlength = "10" maxlength = "40" required >
+
+            <span>Класс</span>
+            <input type="radio" id="ten" name="answer" value="10">
+            <label for="ten">10</label>
+
+            <input type="radio" id="eleven" name="answer" value="11">
+            <label for="eleven">11</label>
+        </section>
+        <iframe
+            src="https://calendar.google.com/calendar/embed?height=600&amp;
+            wkst=2&amp;
+            bgcolor=%230B8043&amp;
+            ctz=Europe%2FMoscow&amp;
+            src=cnUucnVzc2lhbiNob2xpZGF5QGdyb3VwLnYuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;
+            color=%233366CC&amp;
+            showTitle=0&amp;
+            showTabs=1&amp;
+            showCalendars=1&amp;
+            mode=WEEK"
+            style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+        <hr>
+        <section class="date_and_time">
+            <label for="day">День</label>
+            <input id="day" type="number" min="1" max="31" step="1" name="day" required>
+
+            <label for="month">Месяц</label>
+            <select name="month" id="month" required>
+                <option value="январь">Январь</option>
+                <option value="февраль">Февраль</option>
+                <option value="март">Март</option>
+                <option value="апрель">Апрель</option>
+                <option value="май">Май</option>
+                <option value="июнь">Июнь</option>
+                <option value="июль">Июль</option>
+                <option value="август">Август</option>
+                <option value="сентябрь">Сентябрь</option>
+                <option value="октябрь">Октябрь</option>
+                <option value="ноябрь">Ноябрь</option>
+                <option value="декабрь">Декабрь</option>
+            </select>
+            <label for="time">Час</label>
+            <input id="hour" type="number" min="7" max="20" step="1" name="hour" required>
+            <label for="time">Минута</label>
+            <input id="min" type="number" min="00" max="59" step="1" name="min" required>
+        </section>
+
+        <section>
+            <label for="discription">Опишите вашу консультацию</label>
+            <br>
+            <textarea id="discription" name="discription" rows="5" cols="30" minlength = "40" maxlength = "140" required> На консультации вы узнаете ... </textarea>
+        </section>
+
+        <section>
+            <p>Аудитория консультации</p>
+            <label for="nine">9 класс</label>
+            <input id="nine" name="aud" type="checkbox" value="9">
+            <br>
+            <label for="ten">10 класс</label>
+            <input id="ten" name="aud" type="checkbox" value="10">
+            <br>
+            <label for="eleven">11 класс</label>
+            <input id="eleven" name="aud" type="checkbox" value="11">
+        </section>
+
+        <section>
+            <label for="longliness">Продолжительность в минутах</label>
+            <input id="longliness" name="longliness" type="number" step="5" min="10" max="45" required>
+        </section>
+
+        <section class="submission">
+            <input type="submit" value="Отправить">
+        </section>
+
+    </form>
+</body>
+
+</html> -->
