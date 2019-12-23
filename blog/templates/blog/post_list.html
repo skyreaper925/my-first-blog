@@ -3,12 +3,14 @@ from . import views
 
 
 {% block content %}
+<h4>Список консультаций</h4>
     {% for consultation in consultations %}
         <div class="consultation">
                 <h1><a href="{% url 'consultation_detail' pk=consultation.pk %}">{{ consultation.theme }}</a></h1> <!--django будет искать url post_detail в urls; pk - первичный ключ, который идентефицирует каждый post-->
             <div class="date">   
-                <p>{{ consultation.date|linebreaksbr }} </p>
+                 <b>Дата проведения:</b> {{ consultation.date|linebreaksbr }}
             </div>
+            <p>
             <div class="text">
                 {{ consultation.discription }}
             </div>
@@ -84,13 +86,13 @@ from . import views
             calendar += '<tr>';
           }
         }
-        for(var  i = DNlast; i < 7; i++) calendar += '<td> ';
+        for(var  i = DNlast; i < 7; i++) calendar += '<td> ';
         document.querySelector('#'+id+' tbody').innerHTML = calendar;
         document.querySelector('#'+id+' thead td:nth-child(2)').innerHTML = month[D.getMonth()] +' '+ D.getFullYear();
         document.querySelector('#'+id+' thead td:nth-child(2)').dataset.month = D.getMonth();
         document.querySelector('#'+id+' thead td:nth-child(2)').dataset.year = D.getFullYear();
         if (document.querySelectorAll('#'+id+' tbody tr').length < 6) {  // чтобы при перелистывании месяцев не "подпрыгивала" вся страница, добавляется ряд пустых клеток. Итог: всегда 6 строк для цифр
-            document.querySelector('#'+id+' tbody').innerHTML += '<tr><td> <td> <td> <td> <td> <td> <td> ';
+            document.querySelector('#'+id+' tbody').innerHTML += '<tr><td> <td> <td> <td> <td> <td> <td> ';
         }
         }
         calendar("calendar", new Date().getFullYear(), new Date().getMonth());
@@ -104,4 +106,3 @@ from . import views
         }
     </script>-->
 {% endblock %}
-

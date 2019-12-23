@@ -3,10 +3,14 @@ from django.utils import timezone
 from .models import Post, Consultation
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import PostForm, UserForm, ConsultationForm
+from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login
 
 def post_list(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    return render(request, 'blog/post_list.html', {'posts': posts})
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+    return render(request, 'blog/suggs_list.html', {'posts': posts})
 
 def cons_list(request):
     consultations = Consultation.objects.filter(creation__lte=timezone.now()).order_by('creation')
@@ -71,6 +75,9 @@ def cons_detail(request, pk):  # новое представление данн�
     consultation = get_object_or_404(Consultation, pk = pk)
     return render(request, 'blog/consultation_detail.html', {'consultation': consultation})
 
+def cons_detail(request, pk):  # новое представление данных 
+    consultation = get_object_or_404(Consultation, pk = pk)
+    return render(request, 'blog/consultation_detail.html', {'consultation': consultation})
 
 def cons_edit(request, pk):
     consultation = get_object_or_404(Consultation, pk=pk)
@@ -84,4 +91,3 @@ def cons_edit(request, pk):
     else:
         form = ConsultationForm(instance=consultation)
     return render(request, 'blog/consultation_edit.html', {'form': form})
-
