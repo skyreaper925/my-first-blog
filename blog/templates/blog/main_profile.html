@@ -1,0 +1,30 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="main_profile">
+        <b>{{ user.username }}</b></div>
+    <div><b>Почта:</b>{{ user.email }}</div>
+    <a class="btn btn-default" href="{% url 'profile_edit' pk=user.pk %}"><span
+            class="glyphicon glyphicon-pencil"></span></a>
+    <p></p>
+    </div>
+    {% for cons in cons %}
+        <div class="cons">
+            <h1><a href="{% url 'consultation_detail' pk=cons.pk %}">{{ cons.theme }}</a></h1>
+            <!--django будет искать url post_detail в urls; pk - первичный ключ, который идентефицирует каждый post-->
+            <div class="date">
+                <b>Дата проведения:</b> {{ cons.date }}
+            </div>
+            <p>
+            <div class="text">
+                {{ cons.description }}
+            </div>
+            <div><b>Предполагаемая аудитория: </b> {{ cons.spectators }}</div>
+            <div><b>Продолжительность: </b> {{ cons.duration }}</div>
+            <h1>Создатель: <a href="{% url 'profile' pk=cons.pk %}">{{ cons.owner.username }}</a></h1>
+            <a class="btn btn-default" href="{% url 'cons_delete' pk=cons.pk %}"><span
+                    class="glyphicon glyphicon-pencil"></span></a>
+            <hr>
+        </div>
+    {% endfor %}
+{% endblock %}

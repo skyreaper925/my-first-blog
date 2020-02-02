@@ -1,0 +1,12 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="consultation">
+        <h3>{{ consultation.owner.username }}</h3>
+        <h3>{{ consultation.owner.email }}</h3>
+        <h3>{{ consultation.owner.form }}</h3>
+        <h3>{{ consultation.owner.first_name }}</h3>
+        <h3>{{ consultation.owner.last_name }}</h3>
+    </div>
+{% endblock %}
+<!-- <h3><a href="{% url 'grade' pk=consultation.owner.pk %}">Понравился пользователь</a></h3> -->

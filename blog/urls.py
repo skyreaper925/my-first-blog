@@ -1,10 +1,7 @@
-from django.urls import path 
-from . import views, forms
-from django.conf.urls import url
-from django.contrib import admin
-from django.conf.urls import include, url
-from django.conf import settings
 from django.contrib.auth import views as v
+from django.urls import path
+
+from . import views
 
 urlpatterns = [
     path('', views.cons_list, name='cons_list'),
@@ -14,10 +11,13 @@ urlpatterns = [
     path('sugg/new/', views.post_new, name='sugg_new'),
     path('cons/<int:pk>/edit/', views.cons_edit, name='consultation_edit'),
     path('sugg/<int:pk>/edit/', views.post_edit, name='post_edit'),
-    path('user/new/', views.user_new, name='user_new'),
+    path('profile/', views.main_profile, name='main_profile'),
+    path('profile/edit/<int:pk>/', views.profile_edit, name='profile_edit'),
     path('cons/new/', views.cons_new, name='consultation_new'),
-    path('signup/', forms.RegisterFormView.as_view(), name='signup'),
-    # path('signup/', views.signup, name='signup'),
-    # path('login/', forms.LoginFormView.as_view(), name='login'),
+    path('profile/<int:pk>/', views.profile, name='profile'),
+    path('signup/', views.user_new, name='signup'),
     path('login/', v.LoginView.as_view(), name='login'),
+    path('delete/<int:pk>/', views.delete_cons, name='cons_delete'),
+    path('<int:pk>', views.likes, name='likes'),
+    # path('<int:pk>/grade/', views.grades, name='grade'),
 ]
