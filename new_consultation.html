@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <form>
+        <h1>New consultation</h1>
+        <form method="POST" class="consultation-form">{% csrf_token %}
+            <!-- {{ consultation.creation }}
+        {{ consultation.date }}
+        {{ consultation.email }}
+        {{ consultation.theme }}
+        {{ consultation.description }}
+        {{ consultation.spectators }}
+        {{ consultation.duration }} -->
+            {{ form.as_p }}
+
+            <button type="submit" class="save btn btn-default">Save</button>
+        </form>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'blog/base.html' %}
+from . import views
+
+
+{% block content %}
+    <h4>Список консультаций</h4>
+    {% for consultation in consultations %}
+        <div class="consultation">
+        <h1><a href="{% url 'consultation_detail' pk=consultation.pk %}">{{ consultation.theme }}</a></h1>
+        <!--django будет искать url post_detail в urls; pk - первичный ключ, который идентефицирует каждый post-->
+        <div class="date">
+            <b>Дата проведения:</b> {{ consultation.date }}
+        </div>
+        <div>
+            <div class="text">
+                {{ consultation.description }}
+            </div>
+            <div><b>Целевая аудитория: </b> {{ consultation.spectators }}</div>
+            <div><b> Продолжительность: </b> {{ consultation.duration }}</div>
+            <div><b> Место: </b> {{ consultation.place }} </div>
+            <b>Создатель:</b> <a href="{% url 'profile' pk=consultation.pk %}">{{ consultation.owner.username }}</a>
+            <p><a href="{% url 'new_member' pk=consultation.pk %}">Записаться</a>
+            <hr>
+        </div>
+    {% endfor %}
+{% endblock %}
