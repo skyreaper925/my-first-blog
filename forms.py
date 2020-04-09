@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 
-from .models import Post, Consultation
+from .models import Post, Consultation, Comment, Review
 from .models import UserModel
 
 
@@ -9,6 +9,12 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('title', 'text', 'good_date',)
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = 'text'
 
 
 class ConsultationForm(forms.ModelForm):

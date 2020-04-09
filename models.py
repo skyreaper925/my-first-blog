@@ -30,6 +30,10 @@ class UserModel(AbstractUser):
     def __str__(self):
         return self.username
 
+class Comment(models.Model):
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default="")
+    text = models.TextField("Раскрытие темы", max_length=140)  # текст для поста
+    published_date = models.DateTimeField(blank=True, null=True)  # дата
 
 class Consultation(models.Model):
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default="")
@@ -43,7 +47,7 @@ class Consultation(models.Model):
     duration = models.CharField('Продолжительность консультации', max_length=20, default="")
     members = models.ManyToManyField(UserModel, related_name='+')  # участники консультации
     posts = models.ForeignKey(Post, on_delete=models.CASCADE, default="", blank=True, null=True)
-    comments = models.ForeignKey(on_delete=models.CASCADE, default="", blank=True, null=True)
+    comments = models.ForeignKey(Comment, on_delete=models.CASCADE, default="", blank=True, null=True)
     contact = models.IntegerField('Форма взаимодействия', choices=[(1, "Очно"), (2, "Заочно")], default="")
     place = models.CharField('Место проведения', max_length=20, default="")
     hashtag = models.CharField('Место проведения', max_length=200, default="")
@@ -78,4 +82,4 @@ class Review(models.Model):
         verbose_name = 'Отзыв'
 
     def __unicode__(self):
-        return u'%s' % (self.name)
+        return u'%s' % self.name

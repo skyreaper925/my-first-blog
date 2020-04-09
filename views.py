@@ -15,6 +15,11 @@ def post_list(request):
     return render(request, 'suggestions/list_suggs.html', {'posts': posts, 'request': request})
 
 
+def comment_list(request):
+    comments = Comment.objects.order_by('-likes')
+    return render(request, 'suggestions/list_suggs.html', {'comments': comments, 'request': request})
+
+
 def cons_list(request):
     consultations = Consultation.objects.order_by('-creation')
     form = FilterDate(request.GET)
